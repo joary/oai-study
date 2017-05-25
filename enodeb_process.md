@@ -4,21 +4,21 @@ On this study we focus on the eNodeB process of OpenAirInterface, but there are 
 
 The main file of eNodeB application is the lte_softmodem.c this process starts six threads, the following list shows where these threads are defined and started, along with the purpose of each thread.
 
-* **eNB_thread**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1770), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L3750)
+* **eNB_thread**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1770), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L3750)
 	* Thread to send/receive data to/from RF frontend
-* **eNB_thread_tx**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1064), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1641)
+* **eNB_thread_tx**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1064), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1641)
 	* Thread to generate the downlink signal for RF frontend
 	* By default 10 threads of this type are generated.
-* **eNB_thread_rx**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1367), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1642)
+* **eNB_thread_rx**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1367), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1642)
 	* Thread to process the Uplink acquired from RF frontend
 	* By default 10 threads of this type are generated.
-* **scope_thread**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L550), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L3666)
+* **scope_thread**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L550), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L3666)
 	* Thread to update the information shown in the scope (enabled with -d in the command line argument)
-* **emos_thread**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L719), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L3677)
+* **emos_thread**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L719), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L3677)
 	* The EMOS (Eurecom MIMO Openair Sounder) allows multi-user MIMO channel measurements in real time
 	* At this commit the EMOS functions may by unstable,
 	* More at [eurecon wiki](https://twiki.eurecom.fr/twiki/bin/view/OpenAirInterface/EurecomMimoOpenairSounder)
-* **gps_thread**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L649), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L3679)
+* **gps_thread**: defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L649), started [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L3679)
 	* GPS synchronization reference used at EMOS
 
 Since in this study we are interested in the LTE signal, just the second and third threads are focused, the following list shows an overview of the operations done in both eNB_thread_tx and eNB_thread_rx.
@@ -52,8 +52,8 @@ Since in this study we are interested in the LTE signal, just the second and thi
 From both threads we divide the functions in Downlink and Uplink as shown in the following list:
 
 * Downlink:
-	* **phy_procedures_eNB_TX()** defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/openair1/SCHED/phy_procedures_lte_eNb.c#L517), used [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1255)
-	* **do_OFDM_mod_rt()** defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L947), used [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1273)
+	* **phy_procedures_eNB_TX()** defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/openair1/SCHED/phy_procedures_lte_eNb.c#L517), used [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1255)
+	* **do_OFDM_mod_rt()** defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L947), used [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1273)
 * Uplink
-	* **phy_procedures_eNB_RX()** defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/openair1/SCHED/phy_procedures_lte_eNb.c#L2671), used [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1541)
-	* **phy_procedures_eNB_S_RX()** defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/openair1/SCHED/phy_procedures_lte_eNb.c#L293), used [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/master/targets/RT/USER/lte-softmodem.c#L1545)
+	* **phy_procedures_eNB_RX()** defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/openair1/SCHED/phy_procedures_lte_eNb.c#L2671), used [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1541)
+	* **phy_procedures_eNB_S_RX()** defined [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/openair1/SCHED/phy_procedures_lte_eNb.c#L293), used [here](https://gitlab.eurecom.fr/oai/openairinterface5g/blob/v0.5.2/targets/RT/USER/lte-softmodem.c#L1545)
