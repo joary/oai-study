@@ -1,0 +1,5 @@
+rx_rf => calls the trx_{write/read}_func
+init_eNB => configures the rx_rf as eNB->rx_fh
+eNB_thread_FH => calls the rx_fh
+  init_eNB_proc => start eNB_thread_FH as thread
+eNB_thread_single => calls the rx_fh

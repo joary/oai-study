@@ -1,0 +1,65 @@
+lte_softmodem 
+
+main():
+	start_background_system =>
+		This function prepares the environment to a background process that calls sytem() function
+		The OAI sometimes have to call system, and this call can produce some delay in the real-time process
+	set_latency_target =>
+		Trick to reduce latency on DMA
+	set_default_frame_parms =>
+		Initialize frame parameters
+
+	### Now the function will initilize several logging systems
+		logInit() =>
+			Initilize logging
+		get_options() => 
+			Get comand line opetions
+		T_init() =>
+		set_glog =>
+		set_taus_seed() => 
+		itti_init() => 
+	
+	### Now the function will initilize several parameters
+		init_ul_hoping =>
+			Initilize system for ul hoping
+		init_frame_parameters =>
+			Initialize more frame parameters
+		phy_init_lte_top =>
+			Initiliaze tables and signals for PHY: viterby, trelis, scranble, reference signals ...
+		For each component carrier:
+			init_lte_eNB =>
+				Allocate and initilize resources for eNB
+			compute_prach_seq =>
+				Conpute the zadoff-chu sequence based on previous parameters
+				the sequence is hold in Xu vector
+		fill_modeled_runtime_table =>
+			Pre calculate a model of the amount of time used on tx and rx
+
+	dump_frame_parms =>
+		Show the configured parameters on the stdout
+
+	init_openair0 => 
+		Initilize parameters for the RF frontend interface
+
+	### Configure the afinity of main thread
+
+	l2_init =>
+		Initilize functions to interface between l1 and l2
+		the list of functions is big, see it in: openair2/LAYER2/MAC/main.c:435=l2_init
+
+	init_eNB => 
+		Hear the eNodeB is configured and started
+		this function calls init_eNB_proc that will create the threads and mutexes
+		The threads created are:
+		eNB_thread_rxtx
+		eNB_thread_rxtx
+		eNB_thread_FH
+		eNB_thread_prach
+		eNB_thread_synch
+		eNB_thread_asynch_rxtx
+	
+	Send Sync to other threads
+	
+	### Wait for exit signal in a ethernal loop
+
+	stop_eNB
