@@ -12,11 +12,11 @@
 # OpenAirInterface 5G Code Study
 
 ## OAI Code v0.6
-- [Where the eNB application starts?](v0.6/lte_softmode.md)
+- [Where the eNB application starts?](v0.6/lte_softmodem.md)
 
 ## OAI Code v0.5.2
 
-- [The RF Frontend](rf_frontend.md)
-- [The eNodeB Process](enodeb_process.md)
-- [OFDM Modulation Process](dl_ofdm_modulation.md)
-- [Uplink Decodification (TODO)](uplink-decoding.md)
+- [The RF Frontend](v0.5.2/rf_frontend.md)
+- [The eNodeB Process](v0.5.2/enodeb_process.md)
+- [OFDM Modulation Process](v0.5.2/dl_ofdm_modulation.md)
+- [Uplink Decodification (TODO)](v0.5.2/uplink-decoding.md)
