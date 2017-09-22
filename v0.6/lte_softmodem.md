@@ -1,44 +1,64 @@
 
 For the OAI eNodeB application, the file where main function is placed is {{lte-softmodem.c=/targets/RT/USER/lte-softmodem.c:1363}}.
-It is possible to make a list of the things it does:
+
+The main operations executed at the lte-softmodem main function are:
 
 1. Parse the command line options
-2. Create the data-structures
+2. Create the data-structures to hold configuration/operation
 1. Initialize the logging system(s)
 3. Fill the configurations
   1. Configure the eNodeB parameters
   2. Configure eNodeB interfaces with RF (or fronthaul) and MAC
+    - This topic is discussed at section: **Interfaces (MAC and RF/Fronthaul)**
 4. Start the thread(s).
+  - This topic is discussed at section: **eNodeB Start**
 
 ## Interfaces (MAC and RF/Fronthaul)
 
-In the startup configuration it is possible to find two points where the interface
-functions are configured:
+The openair interface defines a set of functions and variables to interface with the lower (RF) and upper (MAC) laywers. 
 
-- l2_init(): configures the interface between eNodeB and MAC as shown {{l2_init=/openair2/LAYER2/MAC/main.c:435}}
-- init_eNB(): 
+These objects are initialized at two points in the code, the functions init_eNB() and l2_init().
 
+2. init_eNB(): 
+ - configres the interface between the eNodeB and RF (or Fronthaul) {{init_eNB=/targets/RT/USER/lte-enb.c:2010}}
+1. l2_init(): 
+ - configures the interface between eNodeB and MAC as shown {{l2_init=/openair2/LAYER2/MAC/main.c:435}}
 
-Two really important functions are init_eNB() and l2_init().
+Diving into the implementation of init_eNB() function it can be seen as an initializer of some important
+function and variables. Essentially these objects are chosed based on the node type.
+Currently there are the following node types:
 
-Functions configured on init_eNB()
+- eNodeB_3GPP:
+ - The default LTE eNodeB application
+- NGFI_RRU_IF5
+  - Remote radio unit for a fronthaul transporting time-domain samples.
+- eNodeB_3GPP_BBU
+  - Base Band Unit (or Remote Cloud Center) for a fronthaul transporting time-domain samples.
+- NGFI_RRU_IF4p5
+  - Remote radio unit for a fronthaul transporting frequency-domain samples.
+- NGFI_RCC_IF4p5
+  - Base Band Unit (or Remote Cloud Center) for a fronthaul transporting frequency-domain samples.
+- NGFI_RAU_IF4p5
+  - Radio Agregation Unit (kind of a fronthaul router) for a fronthaul transporting frequency-domain samples.
 
+For each of the nodes above the variables/functions composing the RF interface is configurated differently.
+The following table hilight the configurations made.
 
-| Function                 | Description                   | Who Calls   |
-==========================================================================
-| eNB->do_prach            | do_prach;                     |             |
-| eNB->fep                 | eNB_fep_full;                 |             |
-| eNB->td                  | ulsch_decoding_data;          |             |
-| eNB->te                  | dlsch_encoding;               |             |
-| eNB->proc_uespec_rx      | phy_procedures_eNB_uespec_RX; |             |
+| Function                 | Description                   | Who Calls  |
+|--------------------------|-------------------------------|------------|
+| eNB->do_prach            | function used to execute the PRACH decoding procedures check at {{do_prach}} |   |
+| eNB->fep                 | eNB_fep_full;                 |   |
+| eNB->td                  | ulsch_decoding_data;          |   |
+| eNB->te                  | dlsch_encoding;               |   |
+| eNB->proc_uespec_rx      | phy_procedures_eNB_uespec_RX; |   |
 | eNB->proc_tx             | proc_tx_full;                 | rxtx (eNB_thread_rxtx, eNB_thread_single) |
-| eNB->tx_fh               | NULL;                         | tx_proc_full, tx_proc_high |
-| eNB->rx_fh               | rx_rf;                        | eNB_thread_fh, eNB_thread_single |
-| eNB->start_rf            | start_rf;                     |             |
-| eNB->start_if            | NULL;                         |             |
-| eNB->fh_asynch           | NULL;                         | eNB_thread_asynch_rxtx |
-| eNB->rfdevice.host_type  | BBU_HOST;                     |             |
-| eNB->ifdevice.host_type  | BBU_HOST;                     |             |
+| eNB->tx_fh               | NULL;                         | tx_proc_full, tx_proc_high                |
+| eNB->rx_fh               | rx_rf;                        | eNB_thread_fh, eNB_thread_single          |
+| eNB->start_rf            | start_rf;                     |   |
+| eNB->start_if            | NULL;                         |   |
+| eNB->fh_asynch           | NULL;                         | eNB_thread_asynch_rxtx                    |
+| eNB->rfdevice.host_type  | BBU_HOST;                     |   |
+| eNB->ifdevice.host_type  | BBU_HOST;                     |   |
 
 
 # eNodeB Start 
