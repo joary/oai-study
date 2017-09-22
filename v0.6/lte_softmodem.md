@@ -58,7 +58,7 @@ The following table hilight the configurations made.
 | eNB->rx_fh               | Receive signal from fronthaul | eNB_thread_fh(), eNB_thread_single() | rx_rf(), rx_fh_slave(), rx_fh_if5(), rx_fh_if4p5(), NULL |
 | eNB->fh_asynch           | Get fronhtaul assynchronous messages | eNB_thread_asynch_rxtx() | fh_if5_asynch_DL(), fh_if4p5_asynch_DL(), fh_if5_asynch_UL(), fh_if4p5_asynch_UL(), NULL |
 | eNB->rfdevice.host_type  | Configure the type of host this device is configured on | - | BBU_HOST, RRH_HOST |
-| eNB->ifdevice.host_type  | Configure the type of host this device is configured on | - | BBU_HOST |
+| eNB->ifdevice.host_type  | Configure the type of host this device is configured on | - | BBU_HOST, RRH_HOST |
 
 With these interface functions configured it is time to start the eNodeB application,
 the next section will discuss the how this is made
@@ -106,7 +106,30 @@ After these threads started the eNB application is prety much ready to go.
           * proc_uespec_rx(): if it exists
             * UE-specific RX processing for subframe n
             * Pointer to: phy_procedures_eNB_uespec_RX
-          * proc_tx() if it exists
+              * compute_srs_pos()
+              * lte_srs_channel_estimation()
+              * pucch_procedures()
+              * process_Msg3() -> MAC connect
+              * rx_ulsch()
+              * ulsch_decoding()
+              * extract_CQI()
+              * lte_est_timing_advance_pusch()
+              * process_HARQ_feedback()
+          * proc_tx() if it exists (lte-enb:404)
+            * proc_tx_high0()
+              * phy_procedures_eNB_TX() pry_procedures_lte_eNB.c:1146
+                * pmch_procedures() - Procedures para o Phisical Multicas Channel
+                * common_signal_procedures() - Generation of PSS/SSS/PBCH
+                * For each connected UE:
+                  * generate_eNB_dlsch_params()
+                * pdsch_procedures() - Generate the shared channel with user data
+                * generate_phich_top
+            * do_OFDM_mod_rt()
+              * do_OFDM_mod_symbol():
+                * beam_precoding()
+                * PHY_ofdm_mod()
+                  * idft()
+            * tx_fh() if exists
 
 ## The eNodeB RF and IF interfaces:
 
