@@ -44,44 +44,78 @@ Currently there are the following node types:
 For each of the nodes above the variables/functions composing the RF interface is configurated differently.
 The following table hilight the configurations made.
 
-| Function                 | Description                   | Who Calls  |
-|--------------------------|-------------------------------|------------|
-| eNB->do_prach            | function used to execute the PRACH decoding procedures check at {{do_prach}} |   |
-| eNB->fep                 | eNB_fep_full;                 |   |
-| eNB->td                  | ulsch_decoding_data;          |   |
-| eNB->te                  | dlsch_encoding;               |   |
-| eNB->proc_uespec_rx      | phy_procedures_eNB_uespec_RX; |   |
-| eNB->proc_tx             | proc_tx_full;                 | rxtx (eNB_thread_rxtx, eNB_thread_single) |
-| eNB->tx_fh               | NULL;                         | tx_proc_full, tx_proc_high                |
-| eNB->rx_fh               | rx_rf;                        | eNB_thread_fh, eNB_thread_single          |
-| eNB->start_rf            | start_rf;                     |   |
-| eNB->start_if            | NULL;                         |   |
-| eNB->fh_asynch           | NULL;                         | eNB_thread_asynch_rxtx                    |
-| eNB->rfdevice.host_type  | BBU_HOST;                     |   |
-| eNB->ifdevice.host_type  | BBU_HOST;                     |   |
+| Function                 | Description                   | Who Calls  | Possible Val |
+|--------------------------|-------------------------------|------------|--------------|
+| eNB->do_prach            | execute the PRACH decoding procedures check at {{do_prach}} |  rxtx() | do_prach, NULL |
+| eNB->start_rf            | initialize the Radio interface ex: (USRP,BLADERF) | eNB_thread_single() | start_rf, NULL |
+| eNB->start_if            | initialize the Intermediate interface ex: (Fronthaul) | eNB_thread_single() | start_if, NULL|
+| eNB->proc_tx             | process the signal to be transmited on air | rxtx() | proc_tx_full, proc_tx_high, NULL |
+| eNB->proc_uespec_rx      | eNB RX processin of UE-Specific signals | rxtx() | phy_procedures_eNB_uespec_RX, NULL |
+| eNB->fep                 | eNB Uplink's DFT (initial SCFDM decode) | phy_procedures_eNB_common_RX() | eNB_fep_full(), eNB_fep_rru_if5, NULL |
+| eNB->td                  | Uplink decoding of ULSCH   | ulsch_decoding() | ulsch_decoding_data(), NULL |
+| eNB->te                  | Downlink encoding of ULSCH | pdsch_procedures() | dlsch_encoding(), NULL |
+| eNB->tx_fh               | Send signal to fronthaul | proc_tx_high(), proc_tx_full()  | tx_fh_if5_mobipass(), tx_fh_if5(), tx_fh_if4p5(), NULL |
+| eNB->rx_fh               | Receive signal from fronthaul | eNB_thread_fh(), eNB_thread_single() | rx_rf(), rx_fh_slave(), rx_fh_if5(), rx_fh_if4p5(), NULL |
+| eNB->fh_asynch           | Get fronhtaul assynchronous messages | eNB_thread_asynch_rxtx() | fh_if5_asynch_DL(), fh_if4p5_asynch_DL(), fh_if5_asynch_UL(), fh_if4p5_asynch_UL(), NULL |
+| eNB->rfdevice.host_type  | Configure the type of host this device is configured on | - | BBU_HOST, RRH_HOST |
+| eNB->ifdevice.host_type  | Configure the type of host this device is configured on | - | BBU_HOST |
 
+With these interface functions configured it is time to start the eNodeB application,
+the next section will discuss the how this is made
 
 # eNodeB Start 
 
-The init_eNB_proc starts some threads, wich can be listed:
+The init_eNB calls an important functino (init_eNB_proc()), whch will initialize 
+eNB application.
+
+There is two main operation modes: single and multi-thread.
+
+- In the single thread mode a thread is created with the following function:
+  - eNB_thread_single
+- In the multi-thread mode three main threads are created with the following functions:
+  - **1 x** eNB_thread_FH
+  - **2 x** eNB_thread_rxtx
+
+Independent of the main operation mode there are some side threads that are created too:
 
 * eNB_thread_prach
-  * Always created
-  * Functions called:
+  * Decode the Physical Random Access Channel
     * prach_procedures:
 * eNB_thread_synch
-  * Always created
-  * Functions called:
-    * Runs initial synchronization like UE
+  * Runs initial synchronization like UE
+
+Also in the case where the node is a Remote Radio Unit the follwing thread is created:
+- eNB_thread_asynch_rxtx
+
+After these threads started the eNB application is prety much ready to go.
+
+# eNodeB Single Thread Mode
+
 * eNB_thread_single
   * Called when the setup process uses single thread (default):
   * Functions called:
-     * start_rf, start_if at the before the loop
+     * start_rf, start_if before the loop
      * Check if the eNodeB is slave (???)
      * On the main loop:
-        * rx_fh()
+        * rx_fh(): if it exists
         * wakeup_slaves()
-        * rxtx()
+        * rxtx() lte-enb:574
+          * do_prach(): if it exists and we are not RCC of IF4p5
+          * phy_procedures_eNB_common_RX() phy_procdures_eNB_common_RX:2835
+            * fep() if it exists
+          * proc_uespec_rx(): if it exists
+            * UE-specific RX processing for subframe n
+            * Pointer to: phy_procedures_eNB_uespec_RX
+          * proc_tx() if it exists
+
+## The eNodeB RF and IF interfaces:
+
+## The slave eNodeB synchronization problem
+
+## The main loop
+
+# eNodeB Multi Thread Mode
+
 * eNB_thread_rxtx
   * There are two threads of this type per Component Carrier (CC), one process the even subframes the other process the odd.
   * This thread receives the subframe **N** and sends the subframe **N+4**
@@ -97,5 +131,3 @@ The init_eNB_proc starts some threads, wich can be listed:
       - trx_read_func
     - wakeup_slaves
     - wakeup_rxtx
-* eNB_thread_asynch_rxtx
-  * Started when the functino split is IF5 or IF4p5 and node timing is synch_to_other
