@@ -128,7 +128,7 @@ After these threads started the eNB application is prety much ready to go.
                 * phy_config_dedicated_eNB_step2() - 
                 * For each connected UE existente on DCI
                   * generate_eNB_ulsch_params()
-		* generate_dci_top() - Encode the DCI
+                * generate_dci_top() - Encode the DCI
                 * pdsch_procedures() - Generate the shared channel with user data
                 * generate_phich_top
             * do_OFDM_mod_rt()
