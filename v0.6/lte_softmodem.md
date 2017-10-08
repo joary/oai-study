@@ -118,10 +118,17 @@ After these threads started the eNB application is prety much ready to go.
           * proc_tx() if it exists (lte-enb:404)
             * proc_tx_high0()
               * phy_procedures_eNB_TX() pry_procedures_lte_eNB.c:1146
-                * pmch_procedures() - Procedures para o Phisical Multicas Channel
+                * UL_failure_indication - Emmit failure indication if exist
+                * eNB_dlsch_ulsch_schedulre - Get scheduling information
+                * pmch_procedures() - Procedures for the Phisical Multicast Channel
                 * common_signal_procedures() - Generation of PSS/SSS/PBCH
-                * For each connected UE:
+                * max_xface->get_dci_sdu() - Get DCI information from MAC
+                * For each connected UE existente on DCI
                   * generate_eNB_dlsch_params()
+                * phy_config_dedicated_eNB_step2() - 
+                * For each connected UE existente on DCI
+                  * generate_eNB_ulsch_params()
+		* generate_dci_top() - Encode the DCI
                 * pdsch_procedures() - Generate the shared channel with user data
                 * generate_phich_top
             * do_OFDM_mod_rt()
