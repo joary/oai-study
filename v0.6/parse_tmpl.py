@@ -1,7 +1,7 @@
 
-import subprocess
+import subprocess, os
 
-base_url = 'https://github.com/joary/openairinterface5g'
+base_url = 'https://github.com/joary/openairinterface5g/tree/study'
 def regen_line(line, info):
 
 	if(len(info) == 0):
@@ -70,3 +70,12 @@ def parse_tmpl(fname, outf):
 	f2.close()
 
 	return ret
+
+if __name__ == '__main__':
+	files = os.listdir('.')
+
+	for f in files:
+		if('.md.tmpl' in f):
+			gen_file = f.replace('.tmpl','');
+			print('Generating:', gen_file)
+			parse_tmpl(f, gen_file)
