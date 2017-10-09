@@ -1,5 +1,4 @@
 
-
 # Important Notes:
 
 * This is expects to be a comprehensive walkthrought over the PHY layer implementation of OpenAirInterface project, it assumes the basic LTE protocol concepts are known.
@@ -11,10 +10,19 @@
 
 # OpenAirInterface 5G Code Study
 
+## Downlink Building Blocks
+
+![dl_blocks](figures/DL_blocks.png "Downlink Building Blocks")
+
 ## OAI Code v0.6
 - [Where the eNB application starts?](v0.6/lte_softmodem.md)
+- [The Common Signals (PSS/SSS/Pilots)](v0.6/common_sig.md)
 - [The PDCCH/PCFICH processing](v0.6/pdcch.md)
 - [The PDSCH processing](v0.6/pdsch.md)
+- The PHICH processing
+- The PBCH processing
+- The OFDM Modulation
+
 
 ## OAI Code v0.5.2
 
