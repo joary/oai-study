@@ -14,6 +14,7 @@
 ## OAI Code v0.6
 - [Where the eNB application starts?](v0.6/lte_softmodem.md)
 - [The PDCCH/PCFICH processing](v0.6/pdcch.md)
+- [The PDSCH processing](v0.6/pdsch.md)
 
 ## OAI Code v0.5.2
 
