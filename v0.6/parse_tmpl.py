@@ -14,7 +14,7 @@ def regen_line(line, info):
 		srcl = str(i[1])
 		func = i[2]
 
-		link = base_url+'/'+src+'#'+srcl
+		link = base_url+'/'+src+'#L'+srcl
 		info_rep = '['+func+'()]('+link+')'
 		new_l = new_l.replace(func+'()', info_rep)
 	return new_l
