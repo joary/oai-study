@@ -15,12 +15,12 @@ The main operations executed at the lte-softmodem main function are:
 
 ## Interfaces (MAC and RF/Fronthaul)
 
-The openair interface defines a set of functions and variables to interface with the lower (RF) and upper (MAC) laywers. 
+The openair interface defines a set of functions and variables to interface with the lower (RF) and upper (MAC) layers. 
 
 These objects are initialized at two points in the code, the functions [init_eNB()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L2054) and [l2_init()](https://github.com/joary/openairinterface5g/tree/study/openair2/LAYER2/MAC/main.c#L435).
 
 2. [init_eNB()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L2054): 
- - configres the interface between the eNodeB and RF (or Fronthaul) {{init_eNB=/targets/RT/USER/lte-enb.c:2010}}
+ - configures the interface between the eNodeB and RF (or Fronthaul) {{init_eNB=/targets/RT/USER/lte-enb.c:2010}}
 1. [l2_init()](https://github.com/joary/openairinterface5g/tree/study/openair2/LAYER2/MAC/main.c#L435): 
  - configures the interface between eNodeB and MAC as shown {{l2_init=/openair2/LAYER2/MAC/main.c:435}}
 
@@ -65,7 +65,7 @@ the next section will discuss the how this is made
 
 # eNodeB Start 
 
-The init_eNB calls an important functino (init_eNB_proc()), whch will initialize 
+The init_eNB calls an important function (init_eNB_proc()), which will initialize 
 eNB application.
 
 There is two main operation modes: single and multi-thread.
