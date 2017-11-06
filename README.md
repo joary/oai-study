@@ -14,7 +14,7 @@
 
 ![dl_blocks](figures/DL_blocks.png "Downlink Building Blocks")
 
-## OAI Code v0.6
+## eNodeB Application (v0.6)
 - [Where the eNB application starts?](v0.6/lte_softmodem.md)
 - [The Common Signals (PSS/SSS/Pilots)](v0.6/common_sig.md)
 - [The PDCCH/PCFICH processing](v0.6/pdcch.md)
@@ -23,6 +23,8 @@
 - The PHICH processing
 - The OFDM Modulation
 
+## UE Application (v0.6)
+- [Where the UE application starts?](ue_v0.6/lte_softmode.md)
 
 ## OAI Code v0.5.2
 

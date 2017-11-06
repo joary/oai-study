@@ -1,0 +1,18 @@
+init_UE():
+  -> Initialize the UE_thread()
+ 
+UE_thread():
+  -> init_UE_threads()
+    -> Create the foollowing threads:
+      -: UE_thread_rxn_txnp4()
+      -: UE_thread_slot1_dl_processing()
+      -: UE_thread_synch(): performs band scanning and synchonization.
+  -> If ue is not synchronzid:
+    -> Get samples from RF
+    -> Unlocks one of the initialized threads depending on the state of the processing.
+
+UE_thread_synch():
+  -> on syncmode: PSS
+    -> lte_sync_timefreq() -> Search for PSS
+  -> on syncmod: pbch
+    -> initial_sync()
