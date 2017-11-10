@@ -67,12 +67,12 @@ the next section will discuss the how this is made
 
 # eNodeB Start 
 
-The init_eNB calls an important functino (init_eNB_proc()), whch will initialize 
+The init_eNB calls an important functinon (**[init_eNB_proc()](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1746)**), which will initialize 
 eNB application.
 
 There is two main operation modes: single and multi-thread.
 
-- In the single thread mode a thread is created with the following function:
+- In the single thread mode a thread is created with the following function(**The default thread mode**):
   - eNB_thread_single
 - In the multi-thread mode three main threads are created with the following functions:
   - **1 x** eNB_thread_FH
@@ -91,13 +91,14 @@ Also in the case where the node is a Remote Radio Unit the follwing thread is cr
 
 After these threads started the eNB application is prety much ready to go.
 
-# eNodeB Single Thread Mode
+# eNodeB Single Thread Mode (**default: Focus**)
 
-* eNB_thread_single
-  * Called when the setup process uses single thread (default):
+* [eNB_thread_single()](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1573)
+  * Called when the setup process uses single thread (**default**):
   * Functions called:
      * start_rf, start_if before the loop
-     * Check if the eNodeB is slave (???)
+     * Check if the eNodeB is slave (???)(master/slave)
+	     * If this is a slave eNodeB, try to synchronize on the DL frequency[hear](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1630). But the conditions is just for **NGFI_RRU_IF5**	     	
      * On the main loop:
         * [rx_fh()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1512): if it exists
         * [wakeup_slaves()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1292)
@@ -143,6 +144,7 @@ After these threads started the eNB application is prety much ready to go.
 ## The eNodeB RF and IF interfaces:
 
 ## The slave eNodeB synchronization problem
+> The problem is to be sloved! If someome have the solutions. Please do not hesitate to let me know.;)
 
 ## The main loop
 
