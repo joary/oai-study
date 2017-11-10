@@ -43,6 +43,15 @@ Currently there are the following node types:
 - NGFI_RAU_IF4p5
 	- Radio Agregation Unit (kind of a fronthaul router) for a fronthaul transporting frequency-domain samples.
 
+#####BBU和RRU的区别
+> **RRU是Remote Radio Unit 远端射频模块，BBU是Building Baseband Unit 室内基带处理单元。**
+> 
+> 基带BBU集中放置在机房，RRU可安装至楼层，BBU与RRU之间采用光纤传输，RRU再通过同轴电缆及功分器(耦合器)等连接至天线，即主干采用光纤，支路采用同轴电缆。
+> 
+> 对于下行方向：光纤从BBU直接连到RRU，BBU和RRU之间传输的是基带数字信号，这样基站可以控制某个用户的信号从指定的RRU通道发射出去，这样可以大大降低对本小区其他通道上用户的干扰。
+
+>对于上行方向：用户手机信号被距离最近的通道收到，然后从这个通道经过光纤传到基站，这样也可以大大降低不同通道上用户之间的干扰。
+
 For each of the nodes above the variables/functions composing the RF interface is configurated differently.
 The following table hilight the configurations made.
 
