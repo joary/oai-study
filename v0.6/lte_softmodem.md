@@ -92,11 +92,16 @@ Independent of the main operation mode there are some side threads that are crea
 * eNB_thread_prach
   * Decode the Physical Random Access Channel
     * prach_procedures:
-* eNB_thread_synch
+* [eNB_thread_synch()](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1826)
   * Runs initial synchronization like UE
+		* [lte_sync_time_init()](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1355)initialize variables for PSS detection
+		* Run initial sync 
+			* lte_sync_time_eNB()
+			* The frame of PSS configure for FDD mode!
+			* TDD mode is to be done.	(TDD模式的同步方式暂时没有，希望有人可以帮忙解答)
 
 Also in the case where the node is a Remote Radio Unit the follwing thread is created: [eNB_thread_asynch_rxtx](https://github.com/wynter-wang/openairinterface5g/blob/c0a64ed506e5ae7d07a49b8c50ed80d4d711c7c2/targets/RT/USER/lte-enb.c#L1827)
-```
+``` 
 if ((eNB->node_timing == synch_to_other) ||
 	(eNB->node_function == NGFI_RRU_IF5) ||
 	(eNB->node_function == NGFI_RRU_IF4p5))
@@ -105,17 +110,19 @@ if ((eNB->node_timing == synch_to_other) ||
 
 ###**_After these threads started the eNB application is pretty much ready to go._**
 
-## eNodeB Single Thread Mode (**default: Focus**)
+## eNodeB Single Thread Mode (*默认模式，重点关注*)
 
-* [eNB_thread_single()](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1573)
+* eNB_thread_single  **单线程模式**
   * Called when the setup process uses single thread (**default**):
   * Functions called:
-     * start_rf, start_if before the loop
-     * Check if the eNodeB is slave (???)(master/slave)   主要是判断当前eNB是否为从设备，如果设从设备，要和其他设备进行同步(FDD无所谓，TDD有相应要求)
-	     * If this is a slave eNodeB, try to synchronize on the DL frequency[hear](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1630). But the conditions is just for **NGFI_RRU_IF5**	     	
-     * On the main loop:
-        * [rx_fh()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1512): if it exists
-        * [wakeup_slaves()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1292)
+     * start_rf, start_if before the loop	// 加载硬件设备	
+     * Check if the eNodeB is slave (???)(master/slave)   //主要是判断当前eNB是否为从设备，如果设从设备，要和其他设备进行同步(FDD无所谓，TDD有相应要求)
+	     * If this is a slave eNodeB, try to synchronize on the DL frequency[hear](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1630). But the conditions is just for **NGFI_RRU_IF5**
+	     * if True: [wakeup_synch()](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1654)	// 唤醒eNB进行与其他eNB或商用基站的同步   
+    	
+    * On the main loop:
+     	* [rx_fh()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1512): if it exists
+     	* [wakeup_slaves()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1292)
         * [rxtx()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L652) lte-enb.c:574
           * [do_prach()](https://github.com/joary/openairinterface5g/tree/study/openair1/SCHED/phy_procedures_lte_eNb.c#L2817): if it exists and we are not RCC of IF4p5
           * [phy_procedures_eNB_common_RX()](https://github.com/joary/openairinterface5g/tree/study/openair1/SCHED/phy_procedures_lte_eNb.c#L2859) phy_procdures_eNB_common_RX:2835

@@ -1,0 +1,406 @@
+ascend@ascend:~/openairinterface5g$ sudo -E ./targets/bin/lte-softmodem.Rel14 -O ./targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band3.tm1.usrpb210.conf --rf-config-file ./targets/ARCH/LMSSDR/LimeSDR_above_1p8GHz_1v4.ini
+# /dev/cpu_dma_latency set to 0us
+log init done
+num component carrier 1 
+WARNING: setting 'gtpu_log_level' not found in configuration file
+WARNING: setting 'gtpu_log_verbosity' not found in configuration file
+WARNING: setting 'udp_log_level' not found in configuration file
+WARNING: setting 'udp_log_verbosity' not found in configuration file
+WARNING: setting 'osa_log_level' not found in configuration file
+WARNING: setting 'osa_log_verbosity' not found in configuration file
+
+----------------------------------------------------------------------
+ ENB CONFIG FILE CONTENT LOADED (TBC):
+----------------------------------------------------------------------
+ENB CONFIG for instance 0:
+
+        eNB name:               eNB_Eurecom_LTEBox:
+        eNB ID:                 3584:
+        Cell type:              CELL_MACRO_ENB:
+        TAC:                    22298:
+        MCC:                    460:
+        MNC:                    01:
+
+        node_function for CC 0:         eNodeB_3GPP:
+        node_timing for CC 0:           synch_to_ext_device:
+        node_synch_ref for CC 0:        0:
+        eutra band for CC 0:            3:
+        downlink freq for CC 0:         1850000000:
+        uplink freq offset for CC 0:    -95000000:
+
+        Cell ID for CC 0:       111:
+        N_RB_DL for CC 0:       50:
+        nb_antenna_ports for CC 0:      1:
+        nb_antennas_tx for CC 0:        1:
+        nb_antennas_rx for CC 0:        1:
+        rach_numberOfRA_Preambles for CC 0:     15:
+        rach_preamblesGroupAConfig for CC 0:    0:
+        rach_powerRampingStep for CC 0: 2:
+        rach_preambleInitialReceivedTargetPower for CC 0:       6:
+        rach_preambleTransMax for CC 0: 6:
+        rach_raResponseWindowSize for CC 0:     7:
+        rach_macContentionResolutionTimer for CC 0:     5:
+        rach_maxHARQ_Msg3Tx for CC 0:   4:
+        bcch_modificationPeriodCoeff for CC 0:  0:
+        pcch_defaultPagingCycle for CC 0:       2:
+        pcch_nB for CC 0:       2:
+        prach_root for CC 0:    0:
+        prach_config_index for CC 0:    0:
+        prach_high_speed for CC 0:      0:
+        prach_zero_correlation for CC 0:        1:
+        prach_freq_offset for CC 0:     2:
+        pdsch_referenceSignalPower for CC 0:    -26:
+        pdsch_p_b for CC 0:     0:
+        pusch_n_SB for CC 0:    1:
+        pusch_hoppingMode for CC 0:     0:
+        pusch_hoppingOffset for CC 0:   0:
+        pusch_enable64QAM for CC 0:     0:
+        pusch_groupHoppingEnabled for CC 0:     1:
+        pusch_groupAssignment for CC 0: 0:
+        pusch_sequenceHoppingEnabled for CC 0:  0:
+        pusch_nDMRS1 for CC 0:  1:
+        pucch_delta_shift for CC 0:     0:
+        pucch_nRB_CQI for CC 0: 1:
+        pucch_nCS_AN for CC 0:  0:
+        srs_enable for CC 0:    0:
+        pusch_p0_Nominal for CC 0:      -108:
+        pucch_p0_Nominal for CC 0:      -108:
+        pusch_alpha for CC 0:   7:
+        pucch_deltaF_Format1 for CC 0:  2:
+        pucch_deltaF_Format1b for CC 0: 1:
+        pucch_deltaF_Format2 for CC 0:  1:
+        pucch_deltaF_Format2a for CC 0: 1:
+        pucch_deltaF_Format2b for CC 0: 1:
+        msg3_delta_Preamble for CC 0:   6:
+        ul_CyclicPrefixLength for CC 0: 0:
+        ue_TimersAndConstants_t300 for CC 0:    7:
+        ue_TimersAndConstants_t301 for CC 0:    5:
+        ue_TimersAndConstants_t310 for CC 0:    5:
+        ue_TimersAndConstants_n310 for CC 0:    7:
+        ue_TimersAndConstants_t311 for CC 0:    3:
+        ue_TimersAndConstants_n311 for CC 0:    0:
+        ue_TransmissionMode for CC 0:   0:
+
+        Global log level:       info
+        HW log level:           info
+        PHY log level:          info
+        MAC log level:          info
+        RLC log level:          info
+        PDCP log level:         info
+        RRC log level:          trace
+        UDP log level:          info
+        GTP log level:          info
+        OSA log level:          info
+
+--------------------------------------------------------
+Downlink frequency/ uplink offset of CC_id 0 set to 1850000000/-95000000
+configuring for eNB
+CPU Freq is 2.491991 
+reported resolution = 1 ns
+[HW][I][main] [/home/ascend/openairinterface5g/targets/RT/USER/lte-softmodem.c:1677]Version: Branch: HEAD Abrev. Hash: c0a64ed Date: Mon Oct 23 15:22:42 2017 +0200
+[PHY][I][init_frame_parms] [/home/ascend/openairinterface5g/openair1/PHY/INIT/lte_parms.c:50]Initializing frame parms for N_RB_DL 50, Ncp 0, osf 1
+lte_parms.c: Setting N_RB_DL to 50, ofdm_symbol_size 1024
+[PHY][I][phy_init_lte_eNB] [/home/ascend/openairinterface5g/openair1/PHY/INIT/lte_init.c:1375][eNB 0] Initializing DL_FRAME_PARMS : N_RB_DL 50, PHICH Resource 1, PHICH Duration 0
+[openair][LTE_PHY][INIT] common_vars->txdataF[0][0] = 0x7fb18430c010 (573440 bytes)
+[openair][LTE_PHY][INIT] common_vars->txdataF[0][5] = 0x7fb18427f010 (573440 bytes)
+[openair][LTE_PHY][INIT] common_vars->txdata[0][0] = 0x7fb1841e8010 (614400 bytes)
+[openair][LTE_PHY][INIT] common_vars->rxdata[0][0] = 0x7fb184151010 (614400 bytes)
+[openair][LTE_PHY][INIT] common_vars->rxdata_7_5kHz[0][0] = 0x7fb187bd1010 (122880 bytes)
+[openair][LTE_PHY][INIT] prach_vars->rxsigF[0] = 0x16f83fc0
+[openair][LTE_PHY][INIT] prach_vars->prach_ifft[0] = 0x16f8ffd0
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:58]init eNB: Node Function 0
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:59]init eNB: Nid_cell 111
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:60]init eNB: frame_type 0,tdd_config 3
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:62]init eNB: number of ue max 16 number of enb max 1 number of harq pid max 8
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:63]init eNB: N_RB_DL 50
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:64]init eNB: prach_config_index 0
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 0
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 0
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 1
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 1
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 2
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 2
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 3
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 3
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 4
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 4
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 5
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 5
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 6
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 6
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 7
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 7
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 8
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 8
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 9
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 9
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 10
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 10
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 11
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 11
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 12
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 12
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 13
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 13
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 14
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 14
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:72]Allocating Transport Channel Buffers for DLSCH, UE 15
+[PHY][I][init_lte_eNB] [/home/ascend/openairinterface5g/targets/SIMU/USER/init_lte.c:84]Allocating Transport Channel Buffer for ULSCH, UE 15
+CPU Freq is 2.491986 
+frame_parms->N_RB_DL=50
+frame_parms->N_RB_UL=50
+frame_parms->Nid_cell=111
+frame_parms->Ncp=0
+frame_parms->Ncp_UL=0
+frame_parms->nushift=0
+frame_parms->frame_type=0
+frame_parms->tdd_config=3
+frame_parms->tdd_config_S=0
+frame_parms->mode1_flag=1
+frame_parms->nb_antenna_ports_eNB=1
+frame_parms->nb_antennas_tx=1
+frame_parms->nb_antennas_rx=1
+frame_parms->ofdm_symbol_size=1024
+frame_parms->nb_prefix_samples=72
+frame_parms->nb_prefix_samples0=80
+frame_parms->first_carrier_offset=724
+frame_parms->samples_per_tti=15360
+frame_parms->symbols_per_tti=14
+HW: Configuring card 0, nb_antennas_tx/rx 1/1
+Card 0, channel 0, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 1850000000.000000, rx_freq 1755000000.000000
+Card 0, channel 1, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 0, channel 2, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 0, channel 3, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+HW: Configuring card 1, nb_antennas_tx/rx 1/1
+Card 1, channel 0, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 1850000000.000000, rx_freq 1755000000.000000
+Card 1, channel 1, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 1, channel 2, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 1, channel 3, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+HW: Configuring card 2, nb_antennas_tx/rx 1/1
+Card 2, channel 0, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 1850000000.000000, rx_freq 1755000000.000000
+Card 2, channel 1, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 2, channel 2, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 2, channel 3, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+HW: Configuring card 3, nb_antennas_tx/rx 1/1
+Card 3, channel 0, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 1850000000.000000, rx_freq 1755000000.000000
+Card 3, channel 1, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 3, channel 2, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 3, channel 3, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+HW: Configuring card 4, nb_antennas_tx/rx 1/1
+Card 4, channel 0, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 1850000000.000000, rx_freq 1755000000.000000
+Card 4, channel 1, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 4, channel 2, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 4, channel 3, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+HW: Configuring card 5, nb_antennas_tx/rx 1/1
+Card 5, channel 0, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 1850000000.000000, rx_freq 1755000000.000000
+Card 5, channel 1, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 5, channel 2, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 5, channel 3, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+HW: Configuring card 6, nb_antennas_tx/rx 1/1
+Card 6, channel 0, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 1850000000.000000, rx_freq 1755000000.000000
+Card 6, channel 1, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 6, channel 2, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 6, channel 3, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+HW: Configuring card 7, nb_antennas_tx/rx 1/1
+Card 7, channel 0, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 1850000000.000000, rx_freq 1755000000.000000
+Card 7, channel 1, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 7, channel 2, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+Card 7, channel 3, Setting tx_gain 120.000000, rx_gain 125.000000, tx_freq 0.000000, rx_freq 0.000000
+[HW][I][main] [/home/ascend/openairinterface5g/targets/RT/USER/lte-softmodem.c:1912]CPU Affinity of main() function is...  CPU_0 
+[PHY][I][main] [/home/ascend/openairinterface5g/targets/RT/USER/lte-softmodem.c:1923]Intializing L2
+[MAC][I][l2_init] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:440][MAIN] MAC_INIT_GLOBAL_PARAM IN...
+[MAC][I][mac_init_global_param] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:359][MAIN] CALLING RLC_MODULE_INIT...
+[MAC][I][mac_init_global_param] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:365][MAIN] RLC_MODULE_INIT OK, malloc16 for mac_rlc_xface...
+[MAC][I][mac_init_global_param] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:376][MAIN] malloc16 OK, mac_rlc_xface @ 0x1a88acd0
+[MAC][I][mac_init_global_param] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:402][MAIN] RLC interface setup and init
+[PDCP][I][pdcp_layer_init] [/home/ascend/openairinterface5g/openair2/LAYER2/PDCP_v10.1.0/pdcp.c:1948]PDCP layer has been initialized
+[MAC][I][mac_init_global_param] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:411][MAIN] Init Global Param Done
+[MAC][I][l2_init] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:454][MAIN] init eNB MAC functions  
+[MAC][I][l2_init] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:478][MAIN] init UE MAC functions 
+[MAC][I][l2_init] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:494][MAIN] PHY Frame configuration 
+[MAC][I][mac_top_init] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:127][MAIN] Init function start:Nb_UE_INST=0
+[MAC][I][mac_top_init] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:148][MAIN] Init function start:Nb_eNB_INST=1
+[MAC][I][mac_top_init] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:196][MAIN] calling RRC
+[RRC][I][openair_rrc_top_init] [/home/ascend/openairinterface5g/openair2/RRC/LITE/rrc_common.c:283][eNB] handover active state is 0 
+[RRC][I][openair_rrc_top_init] [/home/ascend/openairinterface5g/openair2/RRC/LITE/rrc_common.c:290][eNB] eMBMS active state is 0 
+[MAC][I][mac_top_init] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/main.c:347][MAIN][INIT] Init function finished
+[SCTP][I][sctp_eNB_task] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:810]Starting SCTP layer
+[S1AP][I][s1ap_eNB_task] [/home/ascend/openairinterface5g/openair3/S1AP/s1ap_eNB.c:301]Starting S1AP layer
+[UDP][I][udp_enb_init] [/home/ascend/openairinterface5g/openair3/UDP/udp_eNB_task.c:432]Initializing UDP task interface
+[UDP][I][udp_enb_init] [/home/ascend/openairinterface5g/openair3/UDP/udp_eNB_task.c:434]Initializing UDP task interface: DONE
+[GTPV1U][I][gtpv1u_eNB_init] [/home/ascend/openairinterface5g/openair3/GTPV1-U/gtpv1u_eNB.c:914]Initializing GTPU stack 0x1033f40
+ITTI tasks created
+Wait for the ITTI initialize message
+[UDP][I][udp_eNB_create_socket] [/home/ascend/openairinterface5g/openair3/UDP/udp_eNB_task.c:155]Initializing UDP for local address 192.168.168.14 with port 2152
+[UDP][I][udp_eNB_create_socket] [/home/ascend/openairinterface5g/openair3/UDP/udp_eNB_task.c:186]Inserting new descriptor for task 11, sd 40
+[UDP][I][udp_eNB_create_socket] [/home/ascend/openairinterface5g/openair3/UDP/udp_eNB_task.c:192]Initializing UDP for local address 192.168.168.14 with port 2152: DONE
+[ENB_APP][I][eNB_app_register] [/home/ascend/openairinterface5g/openair2/ENB_APP/enb_app.c:257][eNB 0] eNB_app_register for instance 0
+[S1AP][I][s1ap_eNB_handle_register_eNB] [/home/ascend/openairinterface5g/openair3/S1AP/s1ap_eNB.c:229]Registered new eNB[0] and macro eNB id 3584
+[S1AP][I][s1ap_eNB_register_mme] [/home/ascend/openairinterface5g/openair3/S1AP/s1ap_eNB.c:132][eNB 0] check the mme registration state
+[SCTP][I][sctp_handle_new_association_req] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:229]sctp_bindx SCTP_BINDX_ADD_ADDR socket bound to : 192.168.168.14
+[SCTP][I][sctp_handle_new_association_req] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:317]Converted ipv4 address 192.168.168.149 to network type
+[SCTP][I][sctp_handle_new_association_req] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:338]connectx assoc_id  13 in progress..., used 1 addresses
+[SCTP][I][sctp_handle_new_association_req] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:382]Inserted new descriptor for sd 41 in list, nb elements 1, assoc_id 13
+[RRC][I][rrc_enb_task] [/home/ascend/openairinterface5g/openair2/RRC/LITE/rrc_eNB.c:5085][eNB 0] Received RRC_CONFIGURATION_REQ
+[RRC][I][openair_rrc_eNB_configuration] [/home/ascend/openairinterface5g/openair2/RRC/LITE/rrc_eNB.c:3878][FRAME 00000][eNB][MOD 00][RNTI 0] Init...
+[RRC][I][openair_rrc_eNB_configuration] [/home/ascend/openairinterface5g/openair2/RRC/LITE/rrc_eNB.c:3925][FRAME 00000][eNB][MOD 00][RNTI 0] Checking release 
+[RRC][I][openair_rrc_eNB_configuration] [/home/ascend/openairinterface5g/openair2/RRC/LITE/rrc_eNB.c:3936][FRAME 00000][eNB][MOD 00][RNTI 0] Rel14 RRC detected, MBMS flag 0
+[RRC][I][do_SIB23] [/home/ascend/openairinterface5g/openair2/RRC/LITE/MESSAGES/asn1_msg.c:654][eNB 0] Configuration SIB2/3, MBMS = 0
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:142][CONFIG][eNB 0/0] Configuring MAC/PHY
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:158][CONFIG]SIB2/3 Contents (partial)
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:159][CONFIG]pusch_config_common.n_SB = 1
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:160][CONFIG]pusch_config_common.hoppingMode = 0
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:161][CONFIG]pusch_config_common.pusch_HoppingOffset = 0
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:162][CONFIG]pusch_config_common.enable64QAM = 0
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:163][CONFIG]pusch_config_common.groupHoppingEnabled = 1
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:164][CONFIG]pusch_config_common.groupAssignmentPUSCH = 0
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:165][CONFIG]pusch_config_common.sequenceHoppingEnabled = 0
+[MAC][I][rrc_mac_config_req] [/home/ascend/openairinterface5g/openair2/LAYER2/MAC/config.c:166][CONFIG]pusch_config_common.cyclicShift  = 1
+[RRC][I][openair_rrc_on] [/home/ascend/openairinterface5g/openair2/RRC/LITE/rrc_common.c:68][FRAME 00000][eNB][MOD 00][RNTI 0] OPENAIR RRC IN....
+[SCTP][I][sctp_eNB_flush_sockets] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:791]Found data for descriptor 41
+[SCTP][I][sctp_eNB_read_from_socket] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:700]Received notification for sd 41, type 32769
+[SCTP][I][sctp_eNB_read_from_socket] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:723]Client association changed: 0
+[SCTP][I][sctp_get_peeraddresses] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:137]----------------------
+[SCTP][I][sctp_get_peeraddresses] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:138]Peer addresses:
+[SCTP][I][sctp_get_peeraddresses] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:150]    - [192.168.168.149]
+[SCTP][I][sctp_get_peeraddresses] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:166]----------------------
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:94]----------------------
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:95]SCTP Status:
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:96]assoc id .....: 13
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:97]state ........: 4
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:98]instrms ......: 2
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:99]outstrms .....: 2
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:100]fragmentation : 1452
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:101]pending data .: 0
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:102]unack data ...: 0
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:103]rwnd .........: 106496
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:104]peer info     :
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:105]    state ....: 2
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:106]    cwnd .....: 4380
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:107]    srtt .....: 0
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:108]    rto ......: 3000
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:109]    mtu ......: 1500
+[SCTP][I][sctp_get_sockinfo] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_common.c:110]----------------------
+[SCTP][I][sctp_eNB_read_from_socket] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:736]Comm up notified for sd 41, assigned assoc_id 13
+[S1AP][I][s1ap_eNB_generate_s1_setup_request] [/home/ascend/openairinterface5g/openair3/S1AP/s1ap_eNB.c:451]3584 -> 00e000
+[SCTP][I][sctp_send_data] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:425]Successfully sent 59 bytes on stream 0 for assoc_id 13
+[SCTP][I][sctp_eNB_flush_sockets] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:791]Found data for descriptor 41
+[SCTP][I][sctp_eNB_read_from_socket] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:700]Received notification for sd 41, type 32777
+[SCTP][I][sctp_eNB_flush_sockets] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:791]Found data for descriptor 41
+[SCTP][I][sctp_eNB_read_from_socket] [/home/ascend/openairinterface5g/openair3/SCTP/sctp_eNB_task.c:764][13][41] Msg of length 27 received from port 36412, on stream 0, PPID 18
+[S1AP][I][s1ap_decode_s1ap_s1setupresponseies] [/home/ascend/openairinterface5g/cmake_targets/lte_build_oai/build/CMakeFiles/R10.5/s1ap_decoder.c:3535]Decoding message S1ap_S1SetupResponseIEs (/home/ascend/openairinterface5g/cmake_targets/lte_build_oai/build/CMakeFiles/R10.5/s1ap_decoder.c:3535)
+[S1AP][I][s1ap_eNB_handle_s1_setup_response] [/home/ascend/openairinterface5g/openair3/S1AP/s1ap_eNB_handlers.c:294]servedGUMMEIs.list.count 1
+[S1AP][I][s1ap_eNB_handle_s1_setup_response] [/home/ascend/openairinterface5g/openair3/S1AP/s1ap_eNB_handlers.c:312]servedPLMNs.list.count 1
+[ENB_APP][I][eNB_app_task] [/home/ascend/openairinterface5g/openair2/ENB_APP/enb_app.c:355][eNB 0] Received S1AP_REGISTER_ENB_CNF: associated MME 1
+Initializing eNB threads
+[PHY][I][init_eNB] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:2268]Initializing eNB 0 CC_id 0 : (eNodeB_3GPP,synch_to_ext_device)
+LMSSDR: Initializing openair0_device for RRH ...
+cal 0: freq 3500000000.000000, offset 44.000000, diff 1745000000.000000
+cal 1: freq 2660000000.000000, offset 55.000000, diff 905000000.000000
+cal 2: freq 2300000000.000000, offset 54.000000, diff 545000000.000000
+cal 3: freq 1880000000.000000, offset 54.000000, diff 125000000.000000
+cal 4: freq 816000000.000000, offset 79.000000, diff 939000000.000000
+[RRH] has loaded LMSSDR device.
+setup_eNB_buffers: frame_parms = 0x7fb184399788
+[PHY][I][init_eNB_proc] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:1922]Initializing eNB 0 CC_id 0 (eNodeB_3GPP,synch_to_ext_device),
+[PHY][I][init_eNB_proc] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:1987]Call eNG_thread_signal!
+[HW][I][thread_top_init] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:276][SCHED][eNB] eNB_thread_single started on CPU 0 TID 3782, sched_policy = SCHED_FIFO , priority = 99, CPU Affinity= CPU_0 
+waiting for sync (eNB_thread_single)
+Creating te_thread
+[PHY][I][te_thread] [/home/ascend/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dlsch_coding.c:353]thread te created id=3785[HW][I][thread_top_init] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:276][SCHED][eNB] eNB_thread_prach started on CPU 0 TID 3786, sched_policy = SCHED_FIFO , priority = 99, CPU Affinity= CPU_0 
+[HW][I][thread_top_init] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:276][SCHED][eNB] eNB_thread_synch started on CPU 0 TID 3787, sched_policy = SCHED_FIFO , priority = 99, CPU Affinity= CPU_0 
+waiting for sync (eNB_thread_synch)
+Setting eNB buffer to all-RX
+Sending sync to all threads
+got sync (eNB_thread_synch)
+[PHY][I][eNB_thread_synch] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:1486]oai_exit = 0
+got sync (eNB_thread_single)
+TYPE <CTRL-C> TO TERMINATE
+Entering ITTI signals handler
+Connecting to device: LimeSDR-USB, media=USB 3.0, module=STREAM, addr=1d50:6108, serial=0009060B0046190F
+[INFO] Estimated reference clock 30.7198 MHz
+[INFO] Selected reference clock 30.720 MHz
+[INFO] LMS7002M cache /home/ascend/.limesuite/LMS7002M_cache_values.db
+M=204, N=3, Fvco=1044.480 MHz
+16: 01 A8 2A
+phase: min 17.9; max 190.6; selected 104.2)
+M=204, N=3, Fvco=1044.480 MHz
+M=204, N=3, Fvco=1044.480 MHz
+16: 26 DC 7D
+16: AA 5A D5
+phase: min 11.9; max 172.7; selected 92.3)
+M=204, N=3, Fvco=1044.480 MHz
+CGEN: Freq=122.88 MHz, VCO=2.4576 GHz, INT=79, FRAC=0, DIV_OUTCH_CGEN=9
+M=204, N=6, Fvco=1044.480 MHz
+16: 55 A5 AA
+16: 55 AD 2E
+16: BB 5A 55
+phase: min 42.4; max 206.5; selected 124.4)
+M=204, N=6, Fvco=1044.480 MHz
+M=204, N=6, Fvco=1044.480 MHz
+16: 55 AD 2A
+16: 77 8D 3B
+16: 77 DD 3D
+16: AA 5C 75
+16: AA 5A D5
+phase: min 26.5; max 174.7; selected 100.6)
+M=204, N=6, Fvco=1044.480 MHz
+Set sample rate 15.360000 MHz
+Set TX frequency 1850.000000 MHz
+MCU algorithm time: 10 ms
+MCU programming : 16384/16384
+MCU Programming finished, 773 ms
+MCU Ref. clock: 30.72 MHz
+MCU algorithm time: 180 ms
+MCU algorithm time: 1 ms
+MCU Ref. clock: 30.72 MHz
+MCU algorithm time: 104 ms
+############################################################
+Rx calibration using RSSI INTERNAL ON BOARD loopback
+Rx ch.A @ 1755 MHz, BW: 15.36 MHz, RF input: LNAH, PGA: 12, LNA: 12, TIA: 3
+Performed by: MCU
+------------------------------------------------------------
+MCU algorithm time: 1 ms
+Current MCU firmware: 3, DC/IQ calibration full
+MCU Ref. clock: 30.72 MHz
+MCU algorithm time: 203 ms
+############################################################
+Tx calibration using RSSI MCU INTERNAL ON BOARD loopback
+Tx ch.A @ 1850 MHz, BW: 15.36 MHz, RF output: BAND2, Gain: 8
+Performed by: MCU
+------------------------------------------------------------
+MCU algorithm time: 1 ms
+Current MCU firmware: 3, DC/IQ calibration full
+MCU Ref. clock: 30.72 MHz
+MCU algorithm time: 335 ms
+[LMS] Reduce RX Gain 0 by 1.000000 dB
+SR:   15.360 MHz
+SR:   15.360 MHz
+        Rx pktLoss: ts diff: 51680  pktLoss: 37
+[INFO] L 398480
+[LMS] rx frequency:1850.000000;
+cal 0: freq 3500000000.000000, offset 44.000000, diff 1650000000.000000
+cal 1: freq 2660000000.000000, offset 55.000000, diff 810000000.000000
+cal 2: freq 2300000000.000000, offset 54.000000, diff 450000000.000000
+cal 3: freq 1880000000.000000, offset 54.000000, diff 30000000.000000
+cal 4: freq 816000000.000000, offset 79.000000, diff 1034000000.000000
+[PHY][I][eNB_thread_synch] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:1501]Running initial synchronization
+[PHY][I][eNB_thread_synch] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:1508]eNB synch: 43516, val 9423604
+[PHY][I][eNB_thread_synch] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:1538]Estimated sync_pos 43516, peak_val 9423604 => timing offset 36860
+        Rx pktLoss: ts diff: 89760  pktLoss: 65
+[PHY][I][eNB_thread_single] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:1835]Resynchronizing by 36860 samples
+[LMS] rx frequency:1755.000000;
+cal 0: freq 3500000000.000000, offset 44.000000, diff 1745000000.000000
+cal 1: freq 2660000000.000000, offset 55.000000, diff 905000000.000000
+cal 2: freq 2300000000.000000, offset 54.000000, diff 545000000.000000
+cal 3: freq 1880000000.000000, offset 54.000000, diff 125000000.000000
+cal 4: freq 816000000.000000, offset 79.000000, diff 939000000.000000
+[PHY][W][do_prach] [/home/ascend/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:3128][eNB] Frame 2 Subframe 1, eNB PRACH thread busy (IC 0)!!
+        Rx pktLoss: ts diff: 50320  pktLoss: 36
+[PHY][I][rx_rf] [/home/ascend/openairinterface5g/targets/RT/USER/lte-enb.c:1122]rx_rf: rfdevice timing drift of 48960 samples (ts_off 1052640)
+[INFO] L 1577600
+[INFO] L 1667360
+[INFO] L 1757120
+Rx: 45.883 MB/s
+Tx: 43.041 MB/s
+Rx: 46.260 MB/s
