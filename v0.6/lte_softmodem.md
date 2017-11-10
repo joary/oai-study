@@ -5,13 +5,14 @@ The main operations executed at the lte-softmodem main function are:
 
 1. Parse the command line options
 2. Create the data-structures to hold configuration/operation
-1. Initialize the logging system(s)
-3. Fill the configurations
+3. Initialize the logging system(s)
+4. Fill the configurations  
   1. Configure the eNodeB parameters
   2. Configure eNodeB interfaces with RF (or fronthaul) and MAC
-    - This topic is discussed at section: **Interfaces (MAC and RF/Fronthaul)**
-4. Start the thread(s).
-  - This topic is discussed at section: **eNodeB Start**
+     - This topic is discussed at section: **Interfaces (MAC and RF/Fronthaul)**
+
+5. Start the thread(s).
+  	   - This topic is discussed at section: **eNodeB Start**
 
 ## Interfaces (MAC and RF/Fronthaul)
 
@@ -19,9 +20,9 @@ The openair interface defines a set of functions and variables to interface with
 
 These objects are initialized at two points in the code, the functions [init_eNB()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L2054) and [l2_init()](https://github.com/joary/openairinterface5g/tree/study/openair2/LAYER2/MAC/main.c#L435).
 
-2. [init_eNB()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L2054): 
+1. [init_eNB()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L2054): 
  - configres the interface between the eNodeB and RF (or Fronthaul) {{init_eNB=/targets/RT/USER/lte-enb.c:2010}}
-1. [l2_init()](https://github.com/joary/openairinterface5g/tree/study/openair2/LAYER2/MAC/main.c#L435): 
+2. [l2_init()](https://github.com/joary/openairinterface5g/tree/study/openair2/LAYER2/MAC/main.c#L435): 
  - configures the interface between eNodeB and MAC as shown {{l2_init=/openair2/LAYER2/MAC/main.c:435}}
 
 Diving into the implementation of [init_eNB()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L2054) function it can be seen as an initializer of some important
