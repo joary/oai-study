@@ -58,7 +58,7 @@ The following table hilight the configurations made.
 | Function                 | Description                   | Who Calls  | Possible Val |
 |--------------------------|-------------------------------|------------|--------------|
 | eNB->do_prach            | execute the PRACH decoding procedures check at {{do_prach}} |  [rxtx()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L652) | do_prach, NULL |
-| eNB->start_rf            | initialize the Radio interface ex: (USRP,BLADERF) | [eNB_thread_single()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1573) | start_rf, NULL |
+| eNB->start_rf            | initialize the Radio interface ex: (USRP,BLADERF,LMSSDR) | [eNB_thread_single()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1573) | start_rf, NULL |
 | eNB->start_if            | initialize the Intermediate interface ex: (Fronthaul) | [eNB_thread_single()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1573) | start_if, NULL|
 | eNB->proc_tx             | process the signal to be transmited on air | [rxtx()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L652) | proc_tx_full, proc_tx_high, NULL |
 | eNB->proc_uespec_rx      | eNB RX processin of UE-Specific signals | [rxtx()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L652) | phy_procedures_eNB_uespec_RX, NULL |
@@ -95,23 +95,28 @@ Independent of the main operation mode there are some side threads that are crea
 * eNB_thread_synch
   * Runs initial synchronization like UE
 
-Also in the case where the node is a Remote Radio Unit the follwing thread is created:
-- eNB_thread_asynch_rxtx
+Also in the case where the node is a Remote Radio Unit the follwing thread is created: [eNB_thread_asynch_rxtx](https://github.com/wynter-wang/openairinterface5g/blob/c0a64ed506e5ae7d07a49b8c50ed80d4d711c7c2/targets/RT/USER/lte-enb.c#L1827)
+```
+if ((eNB->node_timing == synch_to_other) ||
+	(eNB->node_function == NGFI_RRU_IF5) ||
+	(eNB->node_function == NGFI_RRU_IF4p5))
+      pthread_create( &proc->pthread_asynch_rxtx, attr_asynch, eNB_thread_asynch_rxtx, &eNB->proc ); /* 可以看到，只对RRU做了相应处理 */
+```
 
-After these threads started the eNB application is prety much ready to go.
+###**_After these threads started the eNB application is pretty much ready to go._**
 
-# eNodeB Single Thread Mode (**default: Focus**)
+## eNodeB Single Thread Mode (**default: Focus**)
 
 * [eNB_thread_single()](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1573)
   * Called when the setup process uses single thread (**default**):
   * Functions called:
      * start_rf, start_if before the loop
-     * Check if the eNodeB is slave (???)(master/slave)
+     * Check if the eNodeB is slave (???)(master/slave)   主要是判断当前eNB是否为从设备，如果设从设备，要和其他设备进行同步(FDD无所谓，TDD有相应要求)
 	     * If this is a slave eNodeB, try to synchronize on the DL frequency[hear](https://github.com/wynter-wang/openairinterface5g/blob/affa19ce634218c361ad0cbd061e3775a335758d/targets/RT/USER/lte-enb.c#L1630). But the conditions is just for **NGFI_RRU_IF5**	     	
      * On the main loop:
         * [rx_fh()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1512): if it exists
         * [wakeup_slaves()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L1292)
-        * [rxtx()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L652) lte-enb:574
+        * [rxtx()](https://github.com/joary/openairinterface5g/tree/study/targets/RT/USER/lte-enb.c#L652) lte-enb.c:574
           * [do_prach()](https://github.com/joary/openairinterface5g/tree/study/openair1/SCHED/phy_procedures_lte_eNb.c#L2817): if it exists and we are not RCC of IF4p5
           * [phy_procedures_eNB_common_RX()](https://github.com/joary/openairinterface5g/tree/study/openair1/SCHED/phy_procedures_lte_eNb.c#L2859) phy_procdures_eNB_common_RX:2835
             * [fep()](https://github.com/joary/openairinterface5g/tree/study/openair1/SCHED/phy_procedures_lte_eNb.c#L2886) if it exists
