@@ -3,16 +3,17 @@ For the OAI eNodeB application, the file where main function is placed is {{lte-
 
 The main operations executed at the lte-softmodem main function are:
 
+
 1. Parse the command line options
 2. Create the data-structures to hold configuration/operation
 3. Initialize the logging system(s)
-4. Fill the configurations  
-  1. Configure the eNodeB parameters
-  2. Configure eNodeB interfaces with RF (or fronthaul) and MAC
-     - This topic is discussed at section: **Interfaces (MAC and RF/Fronthaul)**
+4. Fill the configurations
+	1.  Configure the eNodeB parameters
+	2.	Configure eNodeB interfaces with RF (or fronthaul) and MAC
+		- This topic is discussed at section: **Interfaces (MAC and RF/Fronthaul)**
+5. Start the thread(s)
+	- This topic is discussed at section: **eNodeB Start**
 
-5. Start the thread(s).
-  	   - This topic is discussed at section: **eNodeB Start**
 
 ## Interfaces (MAC and RF/Fronthaul)
 
@@ -30,17 +31,17 @@ function and variables. Essentially these objects are chosed based on the node t
 Currently there are the following node types:
 
 - eNodeB_3GPP:
- - The default LTE eNodeB application
+	- The default LTE eNodeB application
 - NGFI_RRU_IF5
-  - Remote radio unit for a fronthaul transporting time-domain samples.
+	- Remote radio unit for a fronthaul transporting time-domain samples.
 - eNodeB_3GPP_BBU
-  - Base Band Unit (or Remote Cloud Center) for a fronthaul transporting time-domain samples.
+	- Base Band Unit (or Remote Cloud Center) for a fronthaul transporting time-domain samples.
 - NGFI_RRU_IF4p5
-  - Remote radio unit for a fronthaul transporting frequency-domain samples.
+	- Remote radio unit for a fronthaul transporting frequency-domain samples.
 - NGFI_RCC_IF4p5
-  - Base Band Unit (or Remote Cloud Center) for a fronthaul transporting frequency-domain samples.
+	- Base Band Unit (or Remote Cloud Center) for a fronthaul transporting frequency-domain samples.
 - NGFI_RAU_IF4p5
-  - Radio Agregation Unit (kind of a fronthaul router) for a fronthaul transporting frequency-domain samples.
+	- Radio Agregation Unit (kind of a fronthaul router) for a fronthaul transporting frequency-domain samples.
 
 For each of the nodes above the variables/functions composing the RF interface is configurated differently.
 The following table hilight the configurations made.
